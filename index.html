@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend Smart</title>
+    <link rel="icon" href="./images/favicon.png" type="png/jpg">
+    <!------------- Bootstrap and Fontawesome ------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ------------------------------------------------------ -->
+</head>
+<style>
+    body {
+        background-image: url(./images/blur.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .container {
+        background-image: url(./images/olive.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 100px;
+        height: 70vh;
+        box-shadow: 0px 0px 5px 5px rgba(48, 98, 65, 0.585);
+        border-radius: 10px 10px;
+        width: 900px;
+        border: none;
+    }
+
+    .container1 {
+        margin-top: 20px;
+        height: 65vh;
+        border-radius: 10px 10px;
+    }
+
+    form {
+        margin-top: 100px;
+    }
+
+    #quote {
+        margin-top: 150px;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #create{
+        border: none;
+        /* background-color: white; */
+    }
+    .btnn {
+        background-color: rgb(116, 144, 126);
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .btnn:hover {
+        background-color: rgb(35, 62, 45);
+    }
+
+    .lognbtn {
+        background-color: rgb(35, 62, 45);
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .lognbtn:hover {
+        background-color: rgb(65, 74, 68);
+    }
+
+    /* --------------------------------------------media query--------------------- */
+    @media screen and (max-width:600px) {
+        body {
+            background-repeat: repeat;
+        }
+
+        .container {
+            width: 400px;
+        }
+        form {
+        margin-top: 50px;
+    }
+        #quote,
+        h5 {
+            margin-top: 30px;
+            font-size: medium;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4" id="quote">
+                <h1>Spend Smart.</h1>
+                <h5>Show me your budget,<br> and I'll tell you what you value</h5>
+                <button class="btnn px-3 py-2" type="button" onclick="register()">Sign-Up</button>
+            </div>
+            <div class="col-7">
+                <div class="container1 bg-light p-5">
+                    <form>
+                        <input type="text" placeholder="Enter Username" class="form-control mb-3" id="loname">
+                        <input type="password" placeholder="Password" class="form-control mb-3" id="lopwd">
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="lognbtn px-3 py-2" type="button" onclick="login()">Sign-In</button>
+                        </div>
+                        <div class="mt-2 text-center">
+                        <a class="text-decoration-none" href="#" >Don't have an account ? </a>
+                        <button id="create"
+                                onclick="register()"><a class="fw-medium"
+                                    href="#" style="text-decoration: none;">Create Account</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+</body>
+<script src="./script.js"></script>
+
+</html>

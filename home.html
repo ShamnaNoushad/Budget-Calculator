@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate through spend smart.</title>
+    <link rel="icon" href="./images/favicon.png" type="png/jpg">
+    <!------------- Bootstrap and Fontawesome ------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ------------------------------------------------------ -->
+</head>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .navbar {
+        background-color: rgb(51, 85, 64);
+    }
+
+    .container {
+        background-image: url(./images/olive.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 50px;
+        height: 70vh;
+        box-shadow: 0px 0px 5px 5px rgba(48, 98, 65, 0.585);
+        border-radius: 10px 10px;
+        width: 900px;
+        border: none;
+    }
+
+    .container2 {
+        height: 40vh;
+        border-radius: 10px 10px;
+    }
+
+    .container1 {
+        margin-top: 20px;
+        height: 65vh;
+        border-radius: 10px 10px;
+    }
+
+    #summary {
+        margin-top: 100px;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .incmbtn {
+        background-color: rgb(35, 62, 45);
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .lognbtn:hover {
+        background-color: rgb(65, 74, 68);
+    }
+
+    .expbtn {
+        background-color: rgb(193, 73, 30);
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    /* -----------table style--------- */
+    #headng {
+        margin-left: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    #incometable {
+        width: 40rem;
+        margin-left: 40px;
+    }
+
+    #expensetable {
+        width: 40rem;
+    }
+
+    /* --------------------------------------------media query--------------------- */
+    @media screen and (max-width:780px) {
+        .container {
+            width: auto;
+        }
+
+        .container2 {
+            height: auto;
+        }
+
+        #summary {
+            margin-top: auto;
+        }
+        #headng {
+        margin-left: 10%;
+       
+    }
+        #incometable {
+            width: 20rem;
+        }
+
+        #expensetable {
+            width: 20rem;
+            margin-left: 10%;
+        }
+
+    }
+</style>
+
+<body>
+    <!-- -----------nav START-------------------------- -->
+    <nav class="navbar sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: white; margin-left: 20px;">
+                <h3 id="welcome" style="color: #a7bba7;"><i class="fa-solid fa-calculator"></i> <b>Spend Smart.</b></h3>
+            </a>
+            <form class="d-flex">
+                <button class="btn bg-outline" type="button" onclick="clearAll()"
+                    style="margin-right: 10px; background-color: rgb(149, 199, 149);">Start Fresh</button>
+                <button class="btn bg-light" type="button" onclick="logout()">Sign-Out</button>
+            </form>
+        </div>
+
+
+    </nav>
+    <!-- -------------NAV END---------------------- -->
+    <!-- --------------- Start--------------- -->
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <div class="container1 bg-light p-5">
+                    <form>
+                        <label for="">Income:</label>
+                        <input type="text" placeholder="Category" class="form-control mb-3" id="cate">
+                        <input type="number" placeholder="Amount" class="form-control mb-3" id="incash">
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="incmbtn px-3 py-2" type="button" onclick="incm()">Save</button>
+                        </div>
+                        <br>
+                        <label for="">Expense:</label>
+                        <input type="text" placeholder="Category" class="form-control mb-3" id="expcate">
+                        <input type="number" placeholder="Amount" class="form-control mb-3" id="expcash">
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="expbtn px-3 py-2" type="button" onclick="expnse()">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-4" id="summary">
+                <div class="container2 bg-light p-5">
+                    <div id="balancec">
+                        <h1><i class="fa-solid fa-wallet" style="color: rgb(51, 85, 64);"></i></h1>
+                        <p style="color: rgb(51, 85, 64);">Your Account Balance is:</p>
+
+                    </div>
+                    <div id="expenses">
+                        <h1><i class="fa-solid fa-money-bill-transfer" style="color: #e51515;"></i></h1>
+                        <p style="color: rgb(220, 39, 39);">Expense:</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <!-- --------------- End--------------- -->
+    <!-- --------------------------Table start----------------- -->
+    <section style="background-color: rgb(51, 85, 64); margin-top: 50px;">
+        <div>
+            <div id="tablediv" class="row row-cols-1 row-cols-xl-2 row-cols-lg-2 row-cols-md-1 row-cols-sm-1">
+                <h2 class="text-center mx-auto  p-2 mb-2 mt-5"
+                    style="color: white; font-weight: bolder; font-size: xx-large;">Spending Insights</h2>
+                <hr class="w-75 mx-auto border border-1 border-light">
+
+                <div class="col table-responsive mx-auto">
+                    <h3 id="headng" class="mx-5">Income:</h3>
+                    <table id="incometable" class="table">
+                        <thead class="fw-medium fs-5 ">
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">Income</th>
+                                <th scope="col">A/c Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fw-medium " id="incomedetails">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col table-responsive">
+                    <h3 id="headng">Expense: </h3>
+                    <table id="expensetable" class="table">
+                        <thead class="fw-medium fs-5">
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">Expense</th>
+                                <th scope="col">Total Expense</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fw-medium " id="expensedetails">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </section>
+    <!-- -------------------------------------------Table End-------------------------------- -->
+
+
+</body>
+<script src="./script.js"></script>
+
+</html>
